@@ -17,6 +17,7 @@
 #ifndef VP_WRITER_DOT_H
 #define VP_WRITER_DOT_H
 
+#include <cstdint>
 #include <fstream>
 #include <string>
 

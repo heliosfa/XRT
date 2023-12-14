@@ -17,6 +17,7 @@
 #ifndef HAL_API_CALLS_DOT_H
 #define HAL_API_CALLS_DOT_H
 
+#include <cstdint>
 #include <fstream>
 
 #include "xdp/profile/database/events/vtf_event.h"
