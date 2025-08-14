@@ -216,6 +216,7 @@ ub_package_list()
      libpython3-dev \
      python3-breathe \
      python3-pip \
+     python3-pybind11 \
      python3-sphinx \
      python3-sphinx-rtd-theme \
      sphinx-common \
@@ -590,7 +591,7 @@ install()
 
     # Install/upgrade pybind11 for building the XRT python bindings
     # We need 2.6.0 minimum version
-    pip3 install -U pybind11
+    # pip3 install -U pybind11 #pulled in with apt in Debian 13
 }
 
 update_package_list
