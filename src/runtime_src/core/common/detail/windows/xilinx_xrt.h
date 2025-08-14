@@ -12,8 +12,7 @@
 # include <d3dkmthk.h>
 #endif
 
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <string>
 #include <cstring>
 #include <cstdlib>
@@ -226,9 +225,9 @@ struct adapter_list
 
 namespace xrt_core::detail {
 
-namespace bfs = boost::filesystem;
+namespace sfs = std::filesystem;
 
-bfs::path
+sfs::path
 xilinx_xrt()
 {
 #if defined(XRT_WINDOWS_HAS_WDK)
@@ -240,23 +239,23 @@ xilinx_xrt()
 
   // If no matching adapter found, return coreutil path (legacy)
   if (!adapter)
-    return bfs::path(xrt_core::dlpath("xrt_coreutil.dll")).parent_path();
+    return sfs::path(xrt_core::dlpath("xrt_coreutil.dll")).parent_path();
 
   return adapter->driver_store_path();
 #else
   // Without WDK we can't query the driver store path, so return coreutil path
-  return bfs::path(xrt_core::dlpath("xrt_coreutil.dll")).parent_path();
+  return sfs::path(xrt_core::dlpath("xrt_coreutil.dll")).parent_path();
 #endif
 }
 
-bfs::path
+sfs::path
 xclbin_path(const std::string& xclbin)
 {
   // For time being, xclbin repo is same as xilinx_xrt
   static auto repo = xilinx_xrt();
   auto xpath = repo / xclbin;
 
-  if (!bfs::exists(xpath))
+  if (!sfs::exists(xpath))
     throw std::runtime_error("xclbin not found: " + xpath.string());
 
   return xpath;
