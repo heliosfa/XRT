@@ -548,7 +548,7 @@ void xrt_cu_hpq_submit(struct xrt_cu *xcu, struct kds_command *xcmd);
 void xrt_cu_abort(struct xrt_cu *xcu, struct kds_client *client);
 bool xrt_cu_abort_done(struct xrt_cu *xcu, struct kds_client *client);
 bool xrt_cu_intr_supported(struct xrt_cu *xcu);
-int xrt_cu_intr_thread(void *data);
+static int xrt_cu_intr_thread(void *data);
 int xrt_cu_start_thread(struct xrt_cu *xcu);
 void xrt_cu_stop_thread(struct xrt_cu *xcu);
 int xrt_cu_cfg_update(struct xrt_cu *xcu, int intr);
